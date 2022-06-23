@@ -12,21 +12,28 @@ export async function calcDelta(a: number, b: number, c: number): Promise<number
 
 }
 
-
 export async function
   calcRoots(a: number, b: number, delta: number)
   : Promise<{ x1: number, x2: number } | undefined> {
 
   const squareRoot = Math.sqrt(delta);
-  console.log(squareRoot);
 
-  if (delta > 0) {
+  console
+    .log(`Aqui está o valor da raíz: ${squareRoot}`)
+
+  if (delta > 0 || delta === 0) {
 
     let x1: number = (-(b) + squareRoot) / (2 * a);
     let x2: number = (-(b) - squareRoot) / (2 * a);
 
+    if (delta === 0) {
+
+      console.log(`As Raizes são iguais, e x1: ${x1}, e x2 : ${x2}`);
+
+    }
+
     console
-      .log(`As Raizes são iguais, e x1: ${x1}, e x2 : ${x2}`);
+      .log(`As Raizes são x1: ${x1}, e x2 : ${x2}`);
 
     const result = {
 
@@ -37,9 +44,11 @@ export async function
     return result;
   }
 
-  else if (delta === 0) {
+  else {
 
     console
       .log("A equação não admite raízes reais");
+
+    return undefined;
   }
 }
